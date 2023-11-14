@@ -1,4 +1,7 @@
+const path = require('path');
 const express = require('express');
+
+const rootDir = require('../utils/path');
 
 const router = express.Router();
 
@@ -8,7 +11,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-    res.send('<h1>Derp Dungeons</h1>');
+    res.sendFile(path.join(rootDir, 'views', 'inventory.html'));
 });
 
 module.exports = router;
