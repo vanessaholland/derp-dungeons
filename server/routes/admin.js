@@ -5,13 +5,16 @@ const rootDir = require('../utils/path');
 
 const router = express.Router();
 
+const cards = [];
+
 router.get('/add-card', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-card.html'));
 });
 
 router.post('/add-card', (req, res, next) => {
-    console.log(req.body);
+    cards.push({ title: req.body.title });
     res.redirect('/admin/add-card');
 });
 
-module.exports = router;
+exports.routes = router;
+exports.cards = cards;
